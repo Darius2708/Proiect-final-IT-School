@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Coș de cumpărături - ElectroShop</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+    <h1>ElectroShop</h1>
+    <nav>
+        <a href="index.html">Acasă</a>
+        <a href="produse.html">Produse</a>
+        <a href="cos.html">Coș</a>
+    </nav>
+</header>
+
+<main class="cart">
+    <h2>Coșul tău</h2>
+    <table class="cart-table">
+        <thead>
+        <tr>
+            <th>Produs</th>
+            <th>Preț unitar</th>
+            <th>Cantitate</th>
+            <th>Total</th>
+            <th>Acțiune</th>
+        </tr>
+        </thead>
+        <tbody id="cart-items">
+        <!-- Produsele vor fi adăugate aici din cart.js -->
+        </tbody>
+    </table>
+
+    <div class="cart-total">
+        <strong>Total general:</strong> <span id="total-general">0.00 RON</span>
+    </div>
+
+    <a href="checkout.html" class="btn">Finalizare comandă</a>
+</main>
+
+<footer>
+    <p>&copy; 2025 ElectroShop</p>
+</footer>
+
+<script src="js/cart.js"></script>
+</body>
+</html>

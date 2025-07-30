@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>ElectroShop - Acasă</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <header>
+        <h1>ElectroShop</h1>
+        <nav>
+            <a href="index.html">Acasă</a>
+            <a href="produse.html">Produse</a>
+            <a href="cos.html">Coș</a>
+        </nav>
+    </header>
+
+    <main class="home">
+        <section class="hero">
+            <h2>Bine ai venit la ElectroShop!</h2>
+            <p>Tot ce ai nevoie în materie de materiale electrice.</p>
+            <a href="produse.html" class="btn">Vezi produsele</a>
+        </section>
+
+        <section class="promo">
+            <h3>Promoții recomandate</h3>
+            <ul>
+                <li>🧰 Reducere 10% la truse de scule</li>
+                <li>🔌 Cablu 3x2.5mm la doar 3.99 RON/m</li>
+                <li>💡 Pachet 5 becuri LED +1 gratis</li>
+            </ul>
+        </section>
+        <section class="produse">
+            <h3>Produse recomandate</h3>
+            <div id="produse-container"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 ElectroShop</p>
+    </footer>
+
+    <script>
+        fetch('http://localhost:8080/api/produse')
+            .then(response => response.json())
+            .then(produse => {
+                const container = document.getElementById('produse-container');
+                produse.forEach(p => {
+                    const produsEl = document.createElement('div');
+                    produsEl.className = 'produs';
+                    produsEl.innerHTML = `
+                        <h4>${p.nume}</h4>
+                        <p>${p.descriere}</p>
+                        <p><strong>Preț:</strong> ${p.pret} lei</p>
+                        <p><strong>Stoc:</strong> ${p.stoc}</p>
+                        <img src="${p.imagineUrl}" alt="${p.nume}" width="120"/>
+                        <hr/>
+                    `;
+                    container.appendChild(produsEl);
+                });
+            })
+            .catch(err => console.error('Eroare la încărcarea produselor:', err));
+    </script>
+
+
+</body>
+</html>

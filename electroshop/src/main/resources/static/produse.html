@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <title>Produse - ElectroShop</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header>
+    <h1>ElectroShop</h1>
+    <nav>
+        <a href="index.html">Acasă</a>
+        <a href="produse.html">Produse</a>
+        <a href="cos.html">Coș</a>
+    </nav>
+</header>
+
+<main>
+    <h2>Produse disponibile</h2>
+    <div class="product-list">
+        <!-- PRODUS 1 -->
+        <div class="product-card">
+            <img src="https://via.placeholder.com/150" alt="Imagine produs">
+            <h3>Cablu electric 3x1.5mm</h3>
+            <p class="brand">Brand: Schrack</p>
+            <p class="pret">Pret: 12.50 RON</p>
+            <p class="descriere">Cablu cu izolație PVC pentru instalații interioare</p>
+            <button class="btn-adauga" onclick="adaugaInCos('1', 'Cablu electric 3x1.5mm', 12.5, 'Schrack', 'Cablu cu izolație PVC pentru instalații interioare', 'https://via.placeholder.com/150')">Adaugă în coș</button>
+        </div>
+
+        <!-- PRODUS 2 -->
+        <div class="product-card">
+            <img src="https://via.placeholder.com/150" alt="Imagine produs">
+            <h3>Priză dublă modulară</h3>
+            <p class="brand">Brand: Gewiss</p>
+            <p class="pret">Pret: 28.00 RON</p>
+            <p class="descriere">Priză modulară de perete, dublă, cu împământare</p>
+            <button class="btn-adauga" onclick="adaugaInCos('2', 'Priză dublă modulară', 28.0, 'Gewiss', 'Priză modulară de perete, dublă, cu împământare', 'https://via.placeholder.com/150')">Adaugă în coș</button>
+        </div>
+    </div>
+</main>
+
+<footer>
+    <p>&copy; 2025 ElectroShop. Toate drepturile rezervate.</p>
+</footer>
+
+<script>
+    function adaugaInCos(id, nume, pret, brand, descriere, imagineUrl) {
+        let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+        const index = cart.findIndex(item => item.id === id);
+        if (index > -1) {
+            cart[index].cantitate += 1;
+        } else {
+            cart.push({ id, nume, pret, brand, descriere, imagineUrl, cantitate: 1 });
+        }
+
+        localStorage.setItem('cart', JSON.stringify(cart));
+        alert(`"${nume}" a fost adăugat în coș.`);
+    }
+</script>
+</body>
+</html>
